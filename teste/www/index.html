@@ -1,0 +1,115 @@
+﻿<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../favicon.ico">
+
+    <title>TCC</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+
+
+    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+    <!--[if lt IE 9]><script src="js/ie8-responsive-file-warning.js"></script><![endif]-->
+    
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+<!--[if lt IE 9]>
+<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+<![endif]-->
+
+<script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
+<script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+<script src="js/index.js"></script>
+
+</head>
+
+<body>
+
+    <!--login modal-->
+    <div id="loginModal" class="modal show" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+                    <h1 class="text-center">Login</h1>
+                </div>
+                <div class="modal-body">
+                    <form class="form col-md-12 center-block" action="principal.html">
+                        <div class="form-group">
+                            <input name="email" id="email" type="text" class="form-control input-lg" placeholder="Usuário">
+                        </div>
+                        <div class="form-group">
+                            <input name="senha" id="senha" type="password" class="form-control input-lg" placeholder="Senha">
+                        </div>
+                        <div class="form-group">
+                            <button class="btn btn-primary btn-lg btn-block" id="login">Entrar</button>
+                            <script>
+
+                                $('#login').click(function(){
+                                    if (($('#email').val() == '') || ($('#senha').val() == '') ) {
+                                        alert('email ou senha vazios');
+                                        return false;
+                                    };
+
+                                    var email = $('#email').val();
+                                    var senha = $('#senha').val();
+
+                                    $.ajax({
+                                        type : 'POST',           
+                                        url : 'http://localhost/projetos/TCC_WEBSERVICE/inicio/index',          
+                                        data:{
+                                            'nome':email,
+                                            'senha':senha
+                                        },
+                                        success : function(data) {            
+                                            if(data=='ok'){                     
+                                                window.location.href = "principal.html";
+                                            } else {                    
+                                                alert("Login Inválido!"); 
+                                            }
+                                        },
+                                        error : function(xhr, type) { 
+                                            alert('Houve algum erro no servidor. Contacte o Administrador!');
+                                        }
+
+                                       
+
+                                    });
+                                    return false;
+                                });
+
+                            </script>
+<span class="pull-right"><a href="#">Registrar</a></span><span><a href="#">Precisa de ajuda?</a></span>
+</div>
+<div class="modal-footer">
+    <div class="col-md-12">
+        <button type="reset" class="btn" data-dismiss="modal" aria-hidden="true">Cancelar</button>
+    </div>  
+</div>
+</form>
+</div>
+
+</div>
+</div>
+</div>
+
+
+<!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    
+</body>
+</html>
