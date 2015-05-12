@@ -4,6 +4,9 @@ $(document).ready(function () {
 		Serie();
 		$('#serie').change(function () {
             Turma();
+			if ($("#tipoatividade").lenght) {
+				Atividade();
+			}
 		});
 	});
 
